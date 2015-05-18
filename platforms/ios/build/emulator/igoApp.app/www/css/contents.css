@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+body {
+	background: #FFBF06 url(/images/main_bg.png) repeat center center;
+	background-size:4.18%;
+}
+/*---------------------------------------
+common
+----------------------------------------*/
+img {
+	max-width:100%;
+	height:auto;
+	border:none;
+	vertical-align:middle;
+}
+/* #header */
+#header {
+	margin:0 auto;
+	width:95.16%;
+}
+#header .titleHead {
+	text-align:center;
+	font-size:2rem;
+	font-weight:bold;
+}
+#header a.back {
+	margin:-30px 0 16px;
+	padding-left:20px;
+	width:20%;
+	display:block;
+	font-size:2rem;
+	background:url(/images/arrow_back.png) no-repeat left center;
+	background-size:16px 26px;
+}
+ul.reSearchBox {
+	margin-bottom:13px;
+	overflow:hidden;
+}
+ul.reSearchBox li {
+	width:33%;
+	float:left;
+	background-color:#EEE;
+}
+ul.reSearchBox li:nth-child(2) {
+	width:34%;
+	border-right:1px solid #FFBF06;
+	border-left:1px solid #FFBF06;
+}
+ul.reSearchBox li select {
+	padding:20px 0;
+	width:100%;
+	font-size:1.6rem;
+	text-align:center;
+	text-align:-webkit-center;
+}
+ul.reSearchBox li select option {
+	text-align:left;
+	text-align:-webkit-left;
+}
+
+/* .copyright */
+p.copyright {
+	margin-bottom:13px;
+	font-size:1.2rem;
+	text-align:center;
+}
+
+/*---------------------------------------
+body #top
+----------------------------------------*/
+#top {
+	padding-bottom:50px;
+}
+#top img.mainLogo {
+	margin:15.7% auto 4.99%;
+	width:51.52%;
+	display:block;
+}
+#top .searchBox {
+	margin:0 auto 8%;
+	width:80.51%;
+}
+#top .searchBox ul {
+	margin-bottom:10px;
+}
+#top .searchBox ul li .searchTitle {
+	margin-bottom:8px;
+	padding-left:18px;
+	font-size:2rem;
+	font-weight:bold;
+	line-height:1;
+	background:url(/images/icon_select.png) no-repeat left center;
+	background-size:15px;
+}
+#top .searchBox ul li select {
+	margin-bottom:18px;
+	padding:13px;
+	width:100%;
+	font-size:2rem;
+	line-height:1;
+	color:#878787;
+	background:#FFF url(/images/arrow_select.png) no-repeat right center;
+	background-size:49px;
+	border:solid 2px #FFF;
+	border-radius:9px;
+}
+#top .searchBox .searchButton {
+	padding:26px;
+	width:100%;
+	display:block;
+	font-weight:bold;
+	font-size:2.1rem;
+	color:#FFF;
+	background: #0B85FF;
+	background-image: -webkit-linear-gradient(top, #3EBBFF, #0B85FF);
+	background-image: -moz-linear-gradient(top, #3EBBFF, #0B85FF);
+	box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	border-radius:9px;
+	text-align:center;
+}
+#top .searchBox .searchButton span {
+	padding:10px 0 10px 30px;
+	background:url(/images/icon_search.png) no-repeat left center;
+	background-size:26px;
+}
+#top .adTopBox {
+	width:100%;
+	height:50px;
+	background-color:#000;
+}
+
+/*---------------------------------------
+body #search
+----------------------------------------*/
+#search .resultBox {
+	margin:0 auto;
+	width:93.39%;
+}
+#search .resultBox .resultBlock {
+	margin-bottom:13px;
+	display:block;
+	background-color:#FFF;
+	box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+}
+#search .resultBox .resultBlock:last-child {
+	margin-bottom:20px;
+}
+#search .resultBox .resultBlock .detailTitle {
+	padding:10px 10px 10px 50px;
+	font-size:2rem;
+	font-weight:bold;
+	color:#FFF;
+}
+#search .resultBox .resultBlock.cup .detailTitle {
+	background:#333 url(/images/icon_cup.png) no-repeat 10px center;
+	background-size:28px;
+}
+#search .resultBox .resultBlock.event .detailTitle {
+	background:#333 url(/images/icon_event.png) no-repeat 10px center;
+	background-size:28px;
+}
+#search .resultBox .resultBlock ul {
+	margin-right:10px;
+	padding:12px 20px 10px 10px;
+	background:url(/images/arrow_detail.png) no-repeat right center;
+	background-size:16px 27px;
+}
+#search .resultBox .resultBlock ul li {
+	margin-bottom:10px;
+	font-size:1.6rem;
+}
+#search .resultBox .resultBlock ul li:last-child {
+	margin-bottom:0;
+}
+#search .resultBox .resultBlock ul li span {
+	margin-right:13px;
+	padding:5px 15px;
+	background-color:#CCC;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

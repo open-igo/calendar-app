@@ -1,0 +1,33 @@
+<div id="top">
+<img src="images/logo_main.png" class="mainLogo" alt="囲碁イベント検索アプリ 365 サンロクゴ">
+<div class="searchBox">
+<ul>
+<li>
+<div class="searchTitle">お住いの地域から探す</div>
+<select name="pref" ng-model="pref">
+<option value="">選択してください</option>
+<option ng-repeat="pref in prefList" value="{{pref.value}}">{{pref.text}}</option>
+</select>
+</li>
+<li>
+<div class="searchTitle">開催月から探す</div>
+<select name="year_month" ng-model="year_month">
+<option value="">選択してください</option>
+<option ng-repeat="yearMonth in yearMonthList" value="{{yearMonth.value}}">{{yearMonth.text}}</option>
+</select>
+</li>
+<li>
+<div class="searchTitle">参加資格から探す</div>
+<select name="guest_status" ng-model="guest_status">
+<option value="">選択してください</option>
+<option ng-repeat="guestStatus in guestStatusList" value="{{guestStatus.value}}">{{guestStatus.text}}</option>
+</select>
+</li>
+</ul>
+<a ng-click='search()' class="searchButton"><span>イベントを探す</span></a>
+
+<!-- ./searchBox--></div>
+<div id="footer">
+<p class="copyright">Copyright &copy; 2015 sanrokugo All rights reserved.</p>
+</div>
+<!-- /#top --></div>

@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+/* Hard reset
+-------------------------------------------------- */
+
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+section,
+summary,
+time,
+audio,
+video {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	box-sizing:border-box;
+}
+input[type=text] {
+	-webkit-user-select:auto;
+}
+* {
+
+}
+li {
+	list-style:none;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border:none;
+	background-color:transparent;
+}
+
+/* Prevents iOS text size adjust after orientation change, without disabling (Thanks to @necolas) */
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	font-size: 62.5%;
+}
+
+/* Base styles
+-------------------------------------------------- */
+
+body {
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 1rem;
+	line-height:1.5;
+	color: #333;
+	background-color: #FFBF06;
+}
+
+/* Universal link styling */
+a {
+	color: #333;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Removes the dark touch outlines on links */
+}
+
+
