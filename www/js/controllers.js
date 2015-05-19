@@ -1,4 +1,4 @@
-angular.module('igoApp.controllers',['igoApp.services'])
+angular.module('igoApp.controllers',['igoApp.services','uiGmapgoogle-maps'])
 
 .controller('topCtrl',function($scope, $state, searchInfo){
 
@@ -54,30 +54,16 @@ $scope.prefList = [
 {value:'沖縄県', text:'沖縄県'}
 ];
 
-//開催月リスト
-//アプリ利用月から1年間分のプルダウンを生成
-var dateArr = [];
-
-var date = new Date();
-var maxDate = new Date();
-maxDate.setYear(maxDate.getFullYear() + 1);
-
-while(date.getTime() < maxDate.getTime()){
-	var year = date.getFullYear();
-	var month = date.getMonth()+1;
-
-	dateArr.push({value:year+('0'+month).slice(-2), text:year+'年'+month+'月'});
-	date.setMonth(date.getMonth() + 1);
-}
 $scope.yearMonthList = dateArr;
 
 //参加資格リスト　ダミー
 $scope.guestStatusList = [
-{value:'0', text:'一般'},
-{value:'1', text:'大学生'},
-{value:'2', text:'高校生'},
-{value:'3', text:'中学生'},
-{value:'4', text:'小学生'}
+{value:'一般', text:'一般'},
+{value:'大学生', text:'大学生'},
+{value:'高校生', text:'高校生'},
+{value:'中学生', text:'中学生'},
+{value:'小学生', text:'小学生'}
+{value:'小学生未満', text:'小学生未満'}
 ];
 
 $scope.search = function(){
@@ -85,34 +71,47 @@ $scope.search = function(){
 	searchInfo.year_month = $scope.year_month;
 	searchInfo.guest_status = $scope.guest_status;
 	$state.go('search');
-}
+};
 })
 
 .controller('searchCtrl',function($scope, searchInfo){
+	$scope.pref = searchInfo.pref;
+	$scope.year_month = searchInfo.year_month;
+	$scope.guest_status = searchInfo.guest_status;
+
+	var resultArr = [];
+
 	Parse.initialize("v0sufrrzgkMvVwdqlzYGr8cVDwNnPh9qnmrPUnr1",
   "pKAxMYvS35pqrLnBYmdS0FHlzNQuw8ZOr6EQjnCh");
 
-	var GameMstModel = Parse.Object.extend('game_mst');
+	var GameMstModel = Parse.Object.extend('tournament_mst');
 	//データ取得
 	var query = new Parse.Query(GameMstModel);
 
 	//検索条件の指定
+	/*
 	if(searchInfo.pref.length > 0){
 		query.containedIn("pref_key")
 	}
-
+	*/
+	query.limit(10);
 	query.find({
 		success: function(gameData){
 			for(var i=0; i<gameData.length ; i++){
-			console.log(gameData[i]);
+				//console.log(gameData[i]);
+				resultArr.push({id:gameData[i].id, data:gameData[i].attributes});
 			}
+			$scope.resultList = resultArr;
+			$scope.$apply();
 		},
 		error: function(error){
 			alert(error);
 		}
 	});
-
+	//console.log($scope.resultList);
 	$scope.pref = searchInfo.pref;
 	$scope.year_month = searchInfo.year_month;
 	$scope.guest_status = searchInfo.guest_status;
+
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 });

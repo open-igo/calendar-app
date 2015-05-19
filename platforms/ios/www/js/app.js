@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('igoApp', ['ionic','igoApp.controllers'])
+angular.module('igoApp', ['ionic','igoApp.controllers','uiGmapgoogle-maps'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,6 +39,11 @@ angular.module('igoApp', ['ionic','igoApp.controllers'])
     url: '/search',
     templateUrl:'templates/search.html',
     controller:'searchCtrl'
+  })
+  .state('detail',{
+    url: '/detail',
+    templateUrl:'templates/detail.html',
+    controllers:'searchCtrl'
   })
 
   $urlRouterProvider.otherwise('/top');

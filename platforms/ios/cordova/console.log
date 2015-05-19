@@ -136,3 +136,8 @@
 2015-05-17 21:21:44.968 HelloCordova[11710:470922] Unlimited access to network resources
 2015-05-17 21:21:45.616 HelloCordova[11710:470922] Resetting plugins due to page load.
 2015-05-17 21:21:46.076 HelloCordova[11710:470922] Finished load of: file:///Users/Elmet/Library/Developer/CoreSimulator/Devices/F65C11FD-0D24-4B84-A9B0-19B8745B7811/data/Containers/Bundle/Application/CFEC17EB-54E4-43DB-8B15-3A9BB032DB1B/HelloCordova.app/www/index.html#/top
+2015-05-18 22:16:23.499 HelloCordova[13276:602142] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/Elmet/Library/Developer/CoreSimulator/Devices/F65C11FD-0D24-4B84-A9B0-19B8745B7811/data/Containers/Data/Application/12F22033-47CE-4B7A-B5A1-CFF84219F0D0/Library/Cookies/Cookies.binarycookies
+2015-05-18 22:16:23.674 HelloCordova[13276:602142] Apache Cordova native platform version 3.8.0 is starting.
+2015-05-18 22:16:23.675 HelloCordova[13276:602142] Multi-tasking -> Device: YES, App: YES
+2015-05-18 22:16:23.678 HelloCordova[13276:602142] Unlimited access to network resources
+2015-05-18 22:16:24.168 HelloCordova[13276:602142] Resetting plugins due to page load.

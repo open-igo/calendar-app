@@ -1,4 +1,4 @@
-angular.module('igoApp.controllers',['igoApp.services'])
+angular.module('igoApp.controllers',['igoApp.services','uiGmapgoogle-maps'])
 
 .controller('topCtrl',function($scope, $state, searchInfo){
 
@@ -85,28 +85,47 @@ $scope.search = function(){
 	searchInfo.year_month = $scope.year_month;
 	searchInfo.guest_status = $scope.guest_status;
 	$state.go('search');
-}
+};
 })
 
 .controller('searchCtrl',function($scope, searchInfo){
+	$scope.pref = searchInfo.pref;
+	$scope.year_month = searchInfo.year_month;
+	$scope.guest_status = searchInfo.guest_status;
+
+	var resultArr = [];
+
 	Parse.initialize("v0sufrrzgkMvVwdqlzYGr8cVDwNnPh9qnmrPUnr1",
   "pKAxMYvS35pqrLnBYmdS0FHlzNQuw8ZOr6EQjnCh");
 
-	var GameMstModel = Parse.Object.extend('game_mst');
+	var GameMstModel = Parse.Object.extend('tournament_mst');
 	//データ取得
 	var query = new Parse.Query(GameMstModel);
+
+	//検索条件の指定
+	/*
+	if(searchInfo.pref.length > 0){
+		query.containedIn("pref_key")
+	}
+	*/
+	query.limit(10);
 	query.find({
 		success: function(gameData){
 			for(var i=0; i<gameData.length ; i++){
-			console.log(gameData[i]);
+				//console.log(gameData[i]);
+				resultArr.push({id:gameData[i].id, data:gameData[i].attributes});
 			}
+			$scope.resultList = resultArr;
+			$scope.$apply();
 		},
 		error: function(error){
 			alert(error);
 		}
 	});
-
+	//console.log($scope.resultList);
 	$scope.pref = searchInfo.pref;
 	$scope.year_month = searchInfo.year_month;
 	$scope.guest_status = searchInfo.guest_status;
+
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 });

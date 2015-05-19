@@ -5,62 +5,48 @@
 <!-- #header --></div>
 <ul class="reSearchBox">
 <li>
+<label>
 <select>
 <option value="選択してください">選択してください</option>
 <option value="a" selected>東京都</option>
 </select>
+</label>
 </li>
 <li>
+<label>
 <select>
 <option value="選択してください">選択してください</option>
 <option value="a" selected>2015年7月</option>
 </select>
+</label>
 </li>
 <li>
+<label>
 <select>
 <option value="選択してください">選択してください</option>
 <option value="a" selected>満5歳以上</option>
 </select>
+</label>
 </li>
 </ul>
 <div class="resultBox">
-
-<a href="#" class="resultBlock cup">
-<div class="detailTitle">囲碁杯</div>
+<a ng-repeat="result in resultList" ui-sref="detail" ng-class="(result.event_flg) ? 'event' : 'cup'" class="resultBlock">
+<div class="detailTitle">{{result.data.tournament_name}}</div>
 <ul>
 <li>
 <span>開催場所</span>
-東京都
+{{result.data.pref}}
 </li>
 <li>
 <span>開催日時</span>
-2015年7月
+{{result.data.tournament_date}}
 </li>
 <li>
 <span>参加資格</span>
-満5歳以上
+{{result.data.guest_status}}
 </li>
 </ul>
-<!-- .resultBlock --></a>
-
-<a href="#" class="resultBlock event">
-<div class="detailTitle">囲碁イベント</div>
-<ul>
-<li>
-<span>開催場所</span>
-東京都
-</li>
-<li>
-<span>開催日時</span>
-2015年7月
-</li>
-<li>
-<span>参加資格</span>
-満5歳以上
-</li>
-</ul>
-<!-- .resultBlock --></a>
-
+</a>
 <!-- .resultBox --></div>
 
 <div id="footer">
