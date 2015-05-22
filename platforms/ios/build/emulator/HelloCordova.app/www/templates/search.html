@@ -1,36 +1,40 @@
-<div id="search">
+<div id="search" ng-class="{loading: loading}">
+<img src="images/loading_bg.png" class="loadingBg"><img src="images/loading_img.png" class="loadingImg">
+<div class="headerBar"></div>
 <div id="header">
 <div class="titleHead">検索結果</div>
-<a ui-sref="top()" class="back">戻る</a>
+<a ng-click="back()" class="back">戻る</a>
 <!-- #header --></div>
 <ul class="reSearchBox">
-<li>
+<li class="pullDown">
 <label>
-<select>
-<option value="選択してください">選択してください</option>
-<option value="a" selected>東京都</option>
+<a>
+<span>{{pref.text || 'お住まいの地域'}}</span>
+<select name="pref" ng-model="pref" ng-options="pref.text for pref in prefList track by pref.value">
+<option value="">選択してください</option>
 </select>
-</label>
+</a>
 </li>
-<li>
-<label>
-<select>
-<option value="選択してください">選択してください</option>
-<option value="a" selected>2015年7月</option>
+<li class="pullDown">
+<a>
+<span>{{ year_month.text || '開催月'}}</span>
+<select name="year_month" ng-model="year_month" ng-options="yearMonth.text for yearMonth in yearMonthList track by yearMonth.value">
+<option value="">選択してください</option>
 </select>
-</label>
+</a>
 </li>
-<li>
-<label>
-<select>
-<option value="選択してください">選択してください</option>
-<option value="a" selected>満5歳以上</option>
+<li class="pullDown">
+<a>
+<span>{{guest_status.text || '参加資格'}}</span>
+<select name="guest_status" ng-model="guest_status" ng-options="guestStatus.text for guestStatus in guestStatusList track by guestStatus.value">
+<option value="">選択してください</option>
 </select>
-</label>
+</a>
 </li>
 </ul>
 <div class="resultBox">
-<a ng-repeat="result in resultList" ui-sref="detail" ng-class="(result.event_flg) ? 'event' : 'cup'" class="resultBlock">
+<a href="javascript:;" class="arrowGet" ng-click="getBeforeTournaments()"><img src="images/arrow_top.png"></a>
+<a ng-repeat="result in resultList" ui-sref="detail({idx:$index})" ng-class="(result.event_flg) ? 'event' : 'cup'" class="resultBlock">
 <div class="detailTitle">{{result.data.tournament_name}}</div>
 <ul>
 <li>
@@ -47,6 +51,7 @@
 </li>
 </ul>
 </a>
+<a href="javascript:;" class="arrowGet" ng-click="getAfterTournaments()"><img src="images/arrow_bottom.png"></a>
 <!-- .resultBox --></div>
 
 <div id="footer">

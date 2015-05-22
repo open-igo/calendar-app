@@ -1,33 +1,32 @@
-<div id="top">
+<div id="top" ng-class="{loading: loading}">
+<img src="images/loading_bg.png" class="loadingBg"><img src="images/loading_img.png" class="loadingImg">
 <img src="images/logo_main.png" class="mainLogo" alt="囲碁イベント検索アプリ 365 サンロクゴ">
 <div class="searchBox">
 <ul>
 <li>
 <div class="searchTitle">お住まいの地域から探す</div>
-<select name="pref" ng-model="pref">
+<select name="pref" ng-model="pref" ng-options="pref.text for pref in prefList track by pref.value" ng-class="{selected: pref}">
 <option value="">選択してください</option>
-<option ng-repeat="pref in prefList" value="{{pref.value}}">{{pref.text}}</option>
 </select>
 </li>
 <li>
 <div class="searchTitle">開催月から探す</div>
-<select name="year_month" ng-model="year_month">
+<select name="year_month" ng-model="year_month" ng-options="yearMonth.text for yearMonth in yearMonthList track by yearMonth.value" ng-class="{selected: year_month}">
 <option value="">選択してください</option>
-<option ng-repeat="yearMonth in yearMonthList" value="{{yearMonth.value}}">{{yearMonth.text}}</option>
 </select>
 </li>
 <li>
 <div class="searchTitle">参加資格から探す</div>
-<select name="guest_status" ng-model="guest_status">
+<select name="guest_status" ng-model="guest_status" ng-options="guestStatus.text for guestStatus in guestStatusList track by guestStatus.value" ng-class="{selected: guest_status}">
 <option value="">選択してください</option>
-<option ng-repeat="guestStatus in guestStatusList" value="{{guestStatus.value}}">{{guestStatus.text}}</option>
 </select>
 </li>
 </ul>
-<a ng-click='search()' class="searchButton"><span>イベントを探す</span></a>
+<a ng-click="search()" class="searchButton"><span>イベントを探す</span></a>
 
 <!-- ./searchBox--></div>
 <div id="footer">
 <p class="copyright">Copyright &copy; 2015 sanrokugo All rights reserved.</p>
 </div>
+<ng-include src="'include/ad_top.html'"></ng-include>
 <!-- /#top --></div>
