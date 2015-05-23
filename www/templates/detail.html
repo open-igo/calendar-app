@@ -22,7 +22,9 @@ TEL：<a href="tel:{{ trimhyphen(detailData.tel) }}">{{detailData.tel}}</a></dd>
 <dd>{{detailData.contact}}<br>
 〒151-5151　囲碁県囲碁市1-5-15<br>
 TEL：<a href="tel:1515151515">15-1515-1515</a>
-<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map></dd>
+<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+<ui-gmap-markers models="siteMarkers" coords="'coords'"></ui-gmap-markers>
+</ui-gmap-google-map></dd>
 <dt>受付締切</dt>
 <dd>{{detailData.entry_limit}}</dd>
 <dt>大会詳細URL</dt>
