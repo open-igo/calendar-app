@@ -221,7 +221,6 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		});
 	};
 
-	//$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 	$scope.showDetail = function(id){
 		$state.go({idx:id});
 	};
@@ -240,6 +239,8 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 .controller('detailCtrl',function($scope,$state,$stateParams,searchResult, animateDirection){
 	$scope.detailData = searchResult.data[$stateParams.idx].data;
 	$scope.isBack = animateDirection.back;
+
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
 	$scope.trimhyphen = function(str){
 		return str.replace(/-/g,'');
