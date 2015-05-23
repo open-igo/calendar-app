@@ -15,16 +15,16 @@
 <dt>会場</dt>
 <dd>{{detailData.site_name}}<br>
 {{detailData.address}}<br>
-TEL：<a href="tel:{{ trimhyphen(detailData.tel) }}">{{detailData.tel}}</a></dd>
+TEL：<a href="tel:{{ trimhyphen(detailData.tel) }}">{{detailData.tel}}</a>
+<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+<ui-gmap-markers models="siteMarkers" coords="'coords'"></ui-gmap-markers>
+</ui-gmap-google-map></dd>
 <dt>参加資格</dt>
 <dd>{{detailData.guest_status}}</dd>
 <dt>お問い合わせ先</dt>
 <dd>{{detailData.contact}}<br>
 〒151-5151　囲碁県囲碁市1-5-15<br>
-TEL：<a href="tel:1515151515">15-1515-1515</a>
-<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-<ui-gmap-markers models="siteMarkers" coords="'coords'"></ui-gmap-markers>
-</ui-gmap-google-map></dd>
+TEL：<a href="tel:1515151515">15-1515-1515</a></dd>
 <dt>受付締切</dt>
 <dd>{{detailData.entry_limit}}</dd>
 <dt>大会詳細URL</dt>
