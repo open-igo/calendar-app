@@ -33,25 +33,25 @@
 </li>
 </ul>
 <div class="resultBox">
-<a href="javascript:;" class="arrowGet" ng-click="getBeforeTournaments()"><img src="images/arrow_top.png"></a>
-<a ng-repeat="result in resultList" ui-sref="detail({idx:$index})" ng-class="(result.event_flg) ? 'event' : 'cup'" class="resultBlock">
+<a href="javascript:;" class="arrowGet" ng-click="getBeforeTournaments()" ng-hide="isNoDateBefore"><img src="images/arrow_top.png"></a>
+<a ng-repeat="result in resultList" ui-sref="detail({idx:$index})" ng-class="{'event':result.data.event_flg, 'cup':!result.data.event_flg}" class="resultBlock">
 <div class="detailTitle">{{result.data.tournament_name}}</div>
 <ul>
 <li>
 <span>開催場所</span>
-{{result.data.pref}}
+<b>{{result.data.pref}}</b>
 </li>
 <li>
 <span>開催日時</span>
-{{result.data.tournament_date}}
+<b>{{result.data.tournament_date}}</b>
 </li>
 <li>
 <span>参加資格</span>
-{{result.data.guest_status}}
+<b>{{result.data.guest_status}}</b>
 </li>
 </ul>
 </a>
-<a href="javascript:;" class="arrowGet" ng-click="getAfterTournaments()"><img src="images/arrow_bottom.png"></a>
+<a href="javascript:;" class="arrowGet" ng-click="getAfterTournaments()" ng-hide="isNoDateAfter"><img src="images/arrow_bottom.png"></a>
 <!-- .resultBox --></div>
 
 <div id="footer">
