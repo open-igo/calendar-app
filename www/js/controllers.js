@@ -1,6 +1,6 @@
 angular.module('igoApp.controllers',['igoApp.services','uiGmapgoogle-maps'])
 
-.controller('topCtrl',function($scope, $state, $rootScope, searchInfo, searchMst, searchResult, animateDirection){
+.controller('topCtrl',function($scope, $state, $rootScope, $location, searchInfo, searchMst, searchResult, animateDirection){
 $scope.isTop = true;
 $scope.isBack = animateDirection.back;
 
@@ -138,6 +138,10 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		};
 
 		console.log(searchParams);
+
+		//再検索を考慮して、前後２０件のデータが存在するかどうかの判定をリセット
+		$scope.isNoDateBefore = false;
+		$scope.isNoDateAfter = false;
 		Parse.Cloud.run('searchTournaments', searchParams, {
 			success: function(results) {
 				var resultArr = [];
@@ -176,8 +180,10 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		Parse.Cloud.run('getBefore20Tournaments', searchParams, {
 			success: function(results) {
 				var resultArr = [];
+				//２０件データを取れない場合はフラグをたてる
+				if(results.length < 20) $scope.isNoDateBefore = true;
 				//このresultsに直前20件の大会データが格納されている
-				for(var i=0; i<results.length ; i++){
+				for(var i=results.length-1; i>=0 ; i--){
 					$scope.resultList.unshift({id:results[i].id, data:results[i].attributes});
 				}
 				searchResult.data = $scope.resultList;
@@ -209,6 +215,8 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		Parse.Cloud.run('getAfter20Tournaments', searchParams, {
 			success: function(results) {
 				//このresultsに直後20件の大会データが格納されている
+				//２０件データを取れない場合はフラグをたてる
+				if(results.length < 20) $scope.isNoDateAfter = true;
 				for(var i=0; i<results.length ; i++){
 					$scope.resultList.push({id:results[i].id, data:results[i].attributes});
 				}
@@ -236,7 +244,7 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 	});
 })
 
-.controller('detailCtrl',function($scope,$state,$stateParams,searchResult, animateDirection){
+.controller('detailCtrl',function($scope,$state,$stateParams,$window,searchResult, animateDirection){
 	$scope.detailData = searchResult.data[$stateParams.idx].data;
 	$scope.isBack = animateDirection.back;
 
@@ -255,6 +263,7 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 	$scope.siteMarkers = [];
 
 	$scope.trimhyphen = function(str){
+		if(str === undefined) return;
 		return str.replace(/-/g,'');
 	};
 
@@ -266,6 +275,6 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		$scope.isBack = true;
 		//$scope.$apply();
 		animateDirection.back = true;
-		$state.go('search');
+		$window.history.back();
 	};
 });
