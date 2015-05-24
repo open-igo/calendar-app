@@ -221,7 +221,6 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		});
 	};
 
-	//$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 	$scope.showDetail = function(id){
 		$state.go({idx:id});
 	};
@@ -240,6 +239,20 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 .controller('detailCtrl',function($scope,$state,$stateParams,searchResult, animateDirection){
 	$scope.detailData = searchResult.data[$stateParams.idx].data;
 	$scope.isBack = animateDirection.back;
+
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({address:$scope.detailData.address},function(results, status){
+		if (status == google.maps.GeocoderStatus.OK) {
+      var latlng = results[0].geometry.location;
+			$scope.map.center = {latitude:latlng.lat(),longitude:latlng.lng()};
+			$scope.siteMarkers[0] = {id:0,coords:{latitude:latlng.lat(),longitude:latlng.lng()}};
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+	});
+
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 13 };
+	$scope.siteMarkers = [];
 
 	$scope.trimhyphen = function(str){
 		return str.replace(/-/g,'');
