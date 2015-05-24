@@ -4,13 +4,13 @@
 <div class="titleHead">イベント詳細</div>
 <a ng-click="back()" class="back">戻る</a>
 <!-- #header --></div>
-<div class="detailTitle cup">{{detailData.tournament_name}}</div>
+<div class="detailTitle" ng-class="{'event':detailData.event_flg, 'cup':!detailData.event_flg}">{{detailData.tournament_name}}</div>
 <div class="photoBox">
 <img src="images/no_image.png" alt="">
 </div>
 <dl class="detailBox">
 <dt>大会日時</dt>
-<dd>平成27年7月1日（水）<br>
+<dd>{{detailData.tournament_date}}<br>
 {{detailData.start_time}}</dd>
 <dt>会場</dt>
 <dd>{{detailData.site_name}}<br>
@@ -23,8 +23,8 @@ TEL：<a href="tel:{{ trimhyphen(detailData.tel) }}">{{detailData.tel}}</a>
 <dd>{{detailData.guest_status}}</dd>
 <dt>お問い合わせ先</dt>
 <dd>{{detailData.contact}}<br>
-〒151-5151　囲碁県囲碁市1-5-15<br>
-TEL：<a href="tel:1515151515">15-1515-1515</a></dd>
+{{detailData.contact_address}}<br>
+TEL：<a href="tel:{{ trimhyphen(detailData.contact_tel) }}">{{detailData.contact_tel}}</a></dd>
 <dt>受付締切</dt>
 <dd>{{detailData.entry_limit}}</dd>
 <dt>大会詳細URL</dt>
