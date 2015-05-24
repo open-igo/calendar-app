@@ -445,7 +445,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = HelloCordova;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ca6118a9-d18f-4e96-91f1-f623872bd036";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -455,8 +455,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Takuma Sugimoto (7E47MWQ93U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Takuma Sugimoto (7E47MWQ93U)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloCordova/HelloCordova-Prefix.pch";
@@ -477,7 +477,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = HelloCordova;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ca6118a9-d18f-4e96-91f1-f623872bd036";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

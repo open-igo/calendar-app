@@ -64,6 +64,8 @@
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    //スプラッシュ時間設定
+    sleep(2);
 
 #if __has_feature(objc_arc)
         self.window = [[UIWindow alloc] initWithFrame:screenBounds];

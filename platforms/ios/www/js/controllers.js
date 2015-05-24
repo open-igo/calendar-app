@@ -138,6 +138,10 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		};
 
 		console.log(searchParams);
+
+		//再検索を考慮して、前後２０件のデータが存在するかどうかの判定をリセット
+		$scope.isNoDateBefore = false;
+		$scope.isNoDateAfter = false;
 		Parse.Cloud.run('searchTournaments', searchParams, {
 			success: function(results) {
 				var resultArr = [];
@@ -176,8 +180,10 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		Parse.Cloud.run('getBefore20Tournaments', searchParams, {
 			success: function(results) {
 				var resultArr = [];
+				//２０件データを取れない場合はフラグをたてる
+				if(results.length < 20) $scope.isNoDateBefore = true;
 				//このresultsに直前20件の大会データが格納されている
-				for(var i=0; i<results.length ; i++){
+				for(var i=results.length-1; i>=0 ; i--){
 					$scope.resultList.unshift({id:results[i].id, data:results[i].attributes});
 				}
 				searchResult.data = $scope.resultList;
@@ -209,6 +215,8 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		Parse.Cloud.run('getAfter20Tournaments', searchParams, {
 			success: function(results) {
 				//このresultsに直後20件の大会データが格納されている
+				//２０件データを取れない場合はフラグをたてる
+				if(results.length < 20) $scope.isNoDateAfter = true;
 				for(var i=0; i<results.length ; i++){
 					$scope.resultList.push({id:results[i].id, data:results[i].attributes});
 				}
@@ -221,7 +229,6 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		});
 	};
 
-	//$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 	$scope.showDetail = function(id){
 		$state.go({idx:id});
 	};
@@ -241,7 +248,22 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 	$scope.detailData = searchResult.data[$stateParams.idx].data;
 	$scope.isBack = animateDirection.back;
 
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({address:$scope.detailData.address},function(results, status){
+		if (status == google.maps.GeocoderStatus.OK) {
+      var latlng = results[0].geometry.location;
+			$scope.map.center = {latitude:latlng.lat(),longitude:latlng.lng()};
+			$scope.siteMarkers[0] = {id:0,coords:{latitude:latlng.lat(),longitude:latlng.lng()}};
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+	});
+
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 13 };
+	$scope.siteMarkers = [];
+
 	$scope.trimhyphen = function(str){
+		if(str === undefined) return;
 		return str.replace(/-/g,'');
 	};
 
