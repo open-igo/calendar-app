@@ -18,7 +18,7 @@ img {
 	width:100%;
 	position:fixed;
 	top:0;
-	background-color:#FFBF06;
+	background-color:#FFCC38;
 	z-index:10;
 }
 #header .titleHead {
@@ -48,8 +48,8 @@ ul.reSearchBox li.pullDown {
 }
 ul.reSearchBox li:nth-child(2) {
 	width:34%;
-	border-right:1px solid #FFBF06;
-	border-left:1px solid #FFBF06;
+	border-right:1px solid #FFCC38;
+	border-left:1px solid #FFCC38;
 }
 ul.reSearchBox li.pullDown a {
 	position:relative;
@@ -263,6 +263,52 @@ body #search
 	margin:-22px 0 0 78px;
 	display:block;
 	font-weight:normal;
+}
+
+#search .resultBox .noDataBlock {
+	display:none;
+}
+
+/* .noData */
+#search.noData .resultBox a.arrowGet {
+	display:none;
+}
+#search.noData .resultBox .noDataBlock {
+	margin:0 auto;
+	width:58%;
+	display:block;
+}
+#search.noData .resultBox .noDataBlock img {
+	margin:0 auto 15px;
+	display:block;
+	width:100%;
+}
+#search.noData .resultBox .noDataBlock p {
+	margin-bottom:80px;
+	font-size:1.38rem;
+	text-align:center;
+}
+#search.noData .resultBox .noDataBlock a {
+	margin-bottom:20px;
+	padding:18px;
+	width:100%;
+	display:block;
+	font-weight:bold;
+	font-size:2.1rem;
+	color:#FFF;
+	background:#888888;
+	background-image: -webkit-linear-gradient(top, #AAAAAA, #888888);
+	background-image: -moz-linear-gradient(top, #AAAAAA, #888888);
+	box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.3) 0px 3px 5px 0px;
+	border-radius:9px;
+	text-align:center;
+}
+#search.noData .resultBox .noDataBlock a span {
+	padding:10px 0 10px 20px;
+	background:url(../images/arrow_back_02.png) no-repeat left center;
+	background-size:13px 21px;
 }
 
 /*---------------------------------------

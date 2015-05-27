@@ -86,7 +86,9 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 	$scope.guest_status = searchInfo.guest_status;
 
 	$scope.resultList = searchResult.data;
-
+	if($scope.resultList.length === 0){
+		$scope.isNoData = true;
+	}
 	$scope.getYearMonthLabel = function(){
 		var retLabel = '';
 		angular.forEach($scope.yearMonthList,function(record, i){
@@ -102,6 +104,7 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 		//初回監視は無視する
 		if($scope.isFirstAccess){
 			$scope.isFirstAccess = false;
+			console.log('初回アクセス');
 			return;
 		}
 		//console.log('検索条件が変更されました');
@@ -146,6 +149,11 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
 			success: function(results) {
 				var resultArr = [];
 				//このresultsに大会データが20件格納されている
+				if(results.length === 0){
+					$scope.isNoData = true;
+					return;
+				}
+				$scope.isNoData = false;
 				for(var i=0; i<results.length ; i++){
 					//console.log(gameData[i]);
 					resultArr.push({id:results[i].id, data:results[i].attributes});

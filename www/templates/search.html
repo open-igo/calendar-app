@@ -1,4 +1,4 @@
-<div id="search" ng-class="{loading: loading}">
+<div id="search" ng-class="{loading: loading, noData: isNoData}">
 <img src="images/loading_bg.png" class="loadingBg"><img src="images/loading_img.png" class="loadingImg">
 <div class="headerBar"></div>
 <div id="header">
@@ -52,6 +52,11 @@
 </ul>
 </a>
 <a href="javascript:;" class="arrowGet" ng-click="getAfterTournaments()" ng-hide="isNoDateAfter"><img src="images/arrow_bottom.png"></a>
+<div class="noDataBlock">
+<img src="/images/no_data.png">
+<p>該当する大会・イベント<br>
+が見つかりません</p>
+<a ng-click="back()"><span>戻る</span></a>
 <!-- .resultBox --></div>
 
 <div id="footer">
