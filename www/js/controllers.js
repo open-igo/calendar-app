@@ -262,12 +262,12 @@ $scope.searchTournaments = function(pref, year_month, guest_status){
       var latlng = results[0].geometry.location;
 			$scope.map.center = {latitude:latlng.lat(),longitude:latlng.lng()};
 			$scope.siteMarkers[0] = {id:0,coords:{latitude:latlng.lat(),longitude:latlng.lng()}};
+			$scope.map.show = true;
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
     }
 	});
 
-	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 13 };
+	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 13 ,show: false};
 	$scope.siteMarkers = [];
 
 	$scope.trimhyphen = function(str){

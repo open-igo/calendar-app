@@ -16,7 +16,7 @@
 <dd>{{detailData.site_name}}<br>
 {{detailData.address}}<br>
 TEL：<a href="tel:{{ trimhyphen(detailData.tel) }}">{{detailData.tel}}</a>
-<ui-gmap-google-map center='map.center' zoom='map.zoom' options="{draggable:false}">
+<ui-gmap-google-map center='map.center' zoom='map.zoom' options="{draggable:false}" ng-show="map.show">
 <ui-gmap-markers models="siteMarkers" coords="'coords'"></ui-gmap-markers>
 </ui-gmap-google-map></dd>
 <dt>参加資格</dt>
